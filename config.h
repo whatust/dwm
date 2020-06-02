@@ -18,7 +18,7 @@ static char normbordercolor[]       = "#555555";
 static char normfgcolor[]           = "#a7adba";
 static char selfgcolor[]            = "#dddddd";
 static char selbordercolor[]        = "#ff7400";
-static char selbgcolor[]            = "#064480";
+static char selbgcolor[]            = "#204a87";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -221,7 +221,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,			XK_F12,		xrdb,		{.v = NULL } },
-	{ MODKEY,			XK_space,	zoom,		{0} },
+	/*{ MODKEY,			XK_space,	zoom,		{0} },*/
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
 	{ 0                , XK_Print       , spawn , SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") } ,
