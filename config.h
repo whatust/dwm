@@ -11,8 +11,8 @@ static const int swallowfloating    = 0;   /* 1 means swallow floating windows b
 static const int smartgaps          = 0;   /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;   /* 0 means no bar */
 static const int topbar             = 1;   /* 0 means bottom bar */
-static const char *fonts[]          = { "mono:size=10", "FontAwesome:pixelsize=14:antialias=true:autohint=true" };
-static char dmenufont[]             = "mono:size=10";
+static const char *fonts[]          = { "monospace:size=10", "FontAwesome:pixelsize=14:antialias=true:autohint=true" };
+static char dmenufont[]             = "monospace:size=10";
 static char normbgcolor[]           = "#1b2b34";
 static char normbordercolor[]       = "#555555";
 static char normfgcolor[]           = "#a7adba";
@@ -99,7 +99,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
