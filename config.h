@@ -128,34 +128,36 @@ static Key keys[] = {
 	{ MODKEY           , XK_BackSpace , spawn , SHCMD("dwm_exit") }                                                   ,
 	{ MODKEY|ShiftMask , XK_BackSpace , spawn , SHCMD("dwm_exit") }                                                   ,
 
-	{ MODKEY              , XK_Tab          , view       , {0} }                                                                                    ,
-	/* { MODKEY|ShiftMask , XK_Tab          , spawn      , SHCMD("") }                                                                              , */
-	{ MODKEY              , XK_q            , killclient , {0} }                                                                                    ,
-	/*{ MODKEY|ShiftMask    , XK_q            , spawn      , SHCMD("dwm_exit") }                                                                        ,*/
-	/*{ MODKEY              , XK_w            , spawn      , SHCMD("$BROWSER") }                                                                      ,*/
-	/*{ MODKEY|ShiftMask    , XK_w            , spawn      , SHCMD("$TERMINAL -e sudo nmtui") }                                                              ,*/
-	{ MODKEY              , XK_e            , spawn      , SHCMD("$TERMINAL -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") }                     ,
-	/*{ MODKEY|ShiftMask    , XK_e            , spawn      , SHCMD("$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") } ,*/
-	{ MODKEY              , XK_r            , spawn      , SHCMD("$TERMINAL -e runvifm") }                                                                      ,
-	{ MODKEY|ShiftMask    , XK_r            , spawn      , SHCMD("$TERMINAL -e htop") }                                                                    ,
-	{ MODKEY              , XK_t            , setlayout  , {.v = &layouts[0]} }                                                                     , /* tile */
-	/*{ MODKEY|ShiftMask    , XK_t            , setlayout  , {.v = &layouts[1]} }                                                                     , *//* bstack */
-	{ MODKEY              , XK_y            , setlayout  , {.v = &layouts[2]} }                                                                     , /* spiral */
-	/*{ MODKEY|ShiftMask    , XK_y            , setlayout  , {.v = &layouts[3]} }                                                                     , *//* dwindle */
-	/*{ MODKEY              , XK_u            , setlayout  , {.v = &layouts[4]} }                                                                     , *//* deck */
-	/*{ MODKEY|ShiftMask    , XK_u            , setlayout  , {.v = &layouts[5]} }                                                                     , *//* monocle */
-	/*{ MODKEY              , XK_i            , setlayout  , {.v = &layouts[6]} }                                                                     , *//* centeredmaster */
-	/*{ MODKEY|ShiftMask    , XK_i            , setlayout  , {.v = &layouts[7]} }                                                                     , *//* centeredfloatingmaster */
-	{ MODKEY              , XK_o            , incnmaster , {.i = +1 } }                                                                             ,
-	{ MODKEY|ShiftMask    , XK_o            , incnmaster , {.i = -1 } }                                                                             ,
-	{ MODKEY              , XK_p            , spawn      , SHCMD("mpc toggle") }                                                                    ,
-	{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("mpc pause ; pauseallmpv") }                                                       ,
-	{ MODKEY              , XK_bracketleft  , spawn      , SHCMD("mpc seek -10") }                                                                  ,
-	{ MODKEY|ShiftMask    , XK_bracketleft  , spawn      , SHCMD("mpc seek -60") }                                                                  ,
-	{ MODKEY              , XK_bracketright , spawn      , SHCMD("mpc seek +10") }                                                                  ,
-	{ MODKEY|ShiftMask    , XK_bracketright , spawn      , SHCMD("mpc seek +60") }                                                                  ,
-	{ MODKEY              , XK_backslash    , view       , {0} }                                                                                    ,
-	/* { MODKEY|ShiftMask , XK_backslash    , spawn      , SHCMD("") }                                                                              , */
+	{ MODKEY              , XK_Tab          , view       , {0} }                                                                                                  ,
+	/* { MODKEY|ShiftMask , XK_Tab          , spawn      , SHCMD("") }                                                                                            , */
+	{ MODKEY              , XK_q            , killclient , {0} }                                                                                                  ,
+	/*{ MODKEY|ShiftMask  , XK_q            , spawn      , SHCMD("dwm_exit") }                                                                                    , */
+	/*{ MODKEY            , XK_w            , spawn      , SHCMD("$BROWSER") }                                                                                    , */
+	/*{ MODKEY|ShiftMask  , XK_w            , spawn      , SHCMD("$TERMINAL -e sudo nmtui") }                                                                     , */
+	/*{ MODKEY            , XK_e            , spawn      , SHCMD("$TERMINAL -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") }                            , */
+	/*{ MODKEY|ShiftMask  , XK_e            , spawn      , SHCMD("$TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") }        , */
+	{ MODKEY              , XK_r            , spawn      , SHCMD("$TERMINAL -e runvifm") }                                                                        ,
+	{ MODKEY|ShiftMask    , XK_r            , spawn      , SHCMD("$TERMINAL -e htop") }                                                                           ,
+	{ MODKEY              , XK_t            , setlayout  , {.v = &layouts[0]} }                                                                                   , /* tile */
+	/*{ MODKEY|ShiftMask  , XK_t            , setlayout  , {.v = &layouts[1]} }                                                                                   , *//* bstack */
+	{ MODKEY              , XK_y            , setlayout  , {.v = &layouts[2]} }                                                                                   , /* spiral */
+	/*{ MODKEY|ShiftMask  , XK_y            , setlayout  , {.v = &layouts[3]} }                                                                                   , *//* dwindle */
+	/*{ MODKEY            , XK_u            , setlayout  , {.v = &layouts[4]} }                                                                                   , *//* deck */
+	/*{ MODKEY|ShiftMask  , XK_u            , setlayout  , {.v = &layouts[5]} }                                                                                   , *//* monocle */
+	/*{ MODKEY            , XK_i            , setlayout  , {.v = &layouts[6]} }                                                                                   , *//* centeredmaster */
+	/*{ MODKEY|ShiftMask  , XK_i            , setlayout  , {.v = &layouts[7]} }                                                                                   , *//* centeredfloatingmaster */
+	{ MODKEY              , XK_o            , incnmaster , {.i = +1 } }                                                                                           ,
+	{ MODKEY|ShiftMask    , XK_o            , incnmaster , {.i = -1 } }                                                                                           ,
+	{ MODKEY              , XK_p            , spawn      , SHCMD("maim screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") }    ,
+	{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("maim -s screen_shot-$(date '+%y%m%d-%H%M-%S').png" && notify-send \"Screenshot saved to ~\"") } ,
+	/*{ MODKEY            , XK_p            , spawn      , SHCMD("mpc toggle") }                                                                                  , */
+	/*{ MODKEY|ShiftMask  , XK_p            , spawn      , SHCMD("mpc pause ; pauseallmpv") }                                                                     , */
+	{ MODKEY              , XK_bracketleft  , spawn      , SHCMD("mpc seek -10") }                                                                                ,
+	{ MODKEY|ShiftMask    , XK_bracketleft  , spawn      , SHCMD("mpc seek -60") }                                                                                ,
+	{ MODKEY              , XK_bracketright , spawn      , SHCMD("mpc seek +10") }                                                                                ,
+	{ MODKEY|ShiftMask    , XK_bracketright , spawn      , SHCMD("mpc seek +60") }                                                                                ,
+	{ MODKEY              , XK_backslash    , view       , {0} }                                                                                                  ,
+	/* { MODKEY|ShiftMask , XK_backslash    , spawn      , SHCMD("") }                                                                                            , */
 
 	{ MODKEY                                                , XK_a          , togglegaps     , {0} }                ,
 	/*{ MODKEY|ShiftMask                                    , XK_a          , defaultgaps    , {0} }                , */
@@ -181,7 +183,7 @@ static Key keys[] = {
 	/*{ MODKEY                                        , XK_z      , incrgaps   , {.i = +3 } }                                        , */
 	/* { MODKEY|ShiftMask                             , XK_z      , spawn      , SHCMD("") }                                         , */
 	/*{ MODKEY                                        , XK_x      , incrgaps   , {.i = -3 } }                                        , */
-	{ MODKEY                                          , XK_x      , killclient , {0} }                                               ,
+	/*{ MODKEY                                        , XK_x      , killclient , {0} }                                               , */
 	/* { MODKEY|ShiftMask                             , XK_x      , spawn      , SHCMD("") }                                         , */
 	/* { MODKEY                                       , XK_c      , spawn      , SHCMD("") }                                         , */
 	/* { MODKEY|ShiftMask                             , XK_c      , spawn      , SHCMD("") }                                         , */
@@ -208,7 +210,7 @@ static Key keys[] = {
 	{ MODKEY           , XK_Page_Down , shiftview , { .i = +1 } } ,
 	{ MODKEY|ShiftMask , XK_Page_Down , shifttag  , { .i = +1 } } ,
 
-	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
+	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \" Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
@@ -224,12 +226,12 @@ static Key keys[] = {
 	/*{ MODKEY,			XK_space,	zoom,		{0} },*/
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
-	{ 0                , XK_Print       , spawn , SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") } ,
-	{ ShiftMask        , XK_Print       , spawn , SHCMD("maimpick") }                                    ,
-	{ MODKEY           , XK_Print       , spawn , SHCMD("dmenurecord") }                                 ,
-	{ MODKEY|ShiftMask , XK_Print       , spawn , SHCMD("dmenurecord kill") }                            ,
-	{ MODKEY           , XK_Delete      , spawn , SHCMD("dmenurecord kill") }                            ,
-	{ MODKEY           , XK_Scroll_Lock , spawn , SHCMD("killall screenkey || screenkey &") }            ,
+	{ 0                , XK_Print       , spawn , SHCMD("maim screen_shot-$(date '+%y%m%d-%H%M-%S').png") }    ,
+	{ ShiftMask        , XK_Print       , spawn , SHCMD("maim -s screen_shot-$(date '+%y%m%d-%H%M-%S').png") } ,
+	/*{ MODKEY           , XK_Print       , spawn , SHCMD("dmenurecord") }                                       ,*/
+	/*{ MODKEY|ShiftMask , XK_Print       , spawn , SHCMD("dmenurecord kill") }                                  ,*/
+	/*{ MODKEY           , XK_Delete      , spawn , SHCMD("dmenurecord kill") }                                  ,*/
+	/*{ MODKEY           , XK_Scroll_Lock , spawn , SHCMD("killall screenkey || screenkey &") }                  ,*/
 
 	{ 0    , XF86XK_AudioMute         , spawn , SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }                                                   ,
 	{ 0    , XF86XK_AudioRaiseVolume  , spawn , SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") }                                   ,
