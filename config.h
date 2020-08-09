@@ -29,12 +29,14 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"$TERMINAL", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"$TERMINAL", "-n", "spcalc", "-f", "Source Code Pro:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"qalculate-gtk" };
+const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spcalc",      spcmd2},
+	{"spmusic",     spcmd3},
 };
 
 /* tagging */
@@ -45,12 +47,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	*/
-	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
-	{ "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
-	{ "St",       NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
-	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
-	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	/* class            instance    title       	    tags mask    isfloating   isterminal  noswallow  monitor */
+	{ "Gimp",           NULL,       NULL,       	    1 << 8,      0,           0,          0,         -1 },
+	{ "St",             NULL,       NULL,       	    0,           0,           1,          0,         -1 },
+	{ NULL,             NULL,       "Event Tester",     0,           0,           0,          1,         -1 },
+	{ NULL,             NULL,       "dragon",           0,           1,           0,          1,         -1 },
+	{ NULL,             "spterm",   NULL,       	    SPTAG(0),    1,           1,          0,         -1 },
+	{ "Qalculate-gtk",  NULL,       NULL,       	    SPTAG(1),    1,           0,          0,         -1 },
+	{ NULL,             "spmusic",  NULL,       	    SPTAG(2),    1,           1,          0,         -1 },
 };
 
 /* layout(s) */
@@ -148,8 +152,10 @@ static Key keys[] = {
 	/*{ MODKEY|ShiftMask  , XK_i            , setlayout  , {.v = &layouts[7]} }                                                                                   , *//* centeredfloatingmaster */
 	{ MODKEY              , XK_o            , incnmaster , {.i = +1 } }                                                                                           ,
 	{ MODKEY|ShiftMask    , XK_o            , incnmaster , {.i = -1 } }                                                                                           ,
-	{ MODKEY              , XK_p            , spawn      , SHCMD("maim screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") }    ,
-	{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("maim -s screen_shot-$(date '+%y%m%d-%H%M-%S').png" && notify-send \"Screenshot saved to ~\"") } ,
+	{ MODKEY              , XK_p            , spawn      , SHCMD("flameshot full --path ~/Images/screenshots/") }    ,
+	{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("flameshot gui") } ,
+	/*{ MODKEY              , XK_p            , spawn      , SHCMD("maim screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") }    ,*/
+	/*{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("maim -s screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") } ,*/
 	/*{ MODKEY            , XK_p            , spawn      , SHCMD("mpc toggle") }                                                                                  , */
 	/*{ MODKEY|ShiftMask  , XK_p            , spawn      , SHCMD("mpc pause ; pauseallmpv") }                                                                     , */
 	{ MODKEY              , XK_bracketleft  , spawn      , SHCMD("mpc seek -10") }                                                                                ,
@@ -159,7 +165,7 @@ static Key keys[] = {
 	{ MODKEY              , XK_backslash    , view       , {0} }                                                                                                  ,
 	/* { MODKEY|ShiftMask , XK_backslash    , spawn      , SHCMD("") }                                                                                            , */
 
-	{ MODKEY                                                , XK_a          , togglegaps     , {0} }                ,
+	/*{ MODKEY                                                , XK_a          , togglegaps     , {0} }              , */
 	/*{ MODKEY|ShiftMask                                    , XK_a          , defaultgaps    , {0} }                , */
 	{ MODKEY                                                , XK_s          , togglesticky   , {0} }                ,
 	/* { MODKEY|ShiftMask                                   , XK_s          , spawn          , SHCMD("") }          , */
@@ -170,12 +176,15 @@ static Key keys[] = {
 	/*{ MODKEY|ShiftMask                                    , XK_f          , setlayout      , {.v = &layouts[8]} } , */
 	/*{ MODKEY                                              , XK_g          , shiftview      , { .i = -1 } }        , */
 	/*{ MODKEY|ShiftMask                                    , XK_g          , shifttag       , { .i = -1 } }        , */
-	{ MODKEY                                                , XK_h          , setmfact       , {.f = -0.05} }       ,
 	/* J and K are automatically bound above in STACKEYS */
+	{ MODKEY                                                , XK_h          , setmfact       , {.f = -0.05} }       ,
 	{ MODKEY                                                , XK_l          , setmfact       , {.f = +0.05} }       ,
+
+	{ MODKEY|ShiftMask                                      , XK_h          , focusmon       , { .i = -1 } }       ,
+	{ MODKEY|ShiftMask                                      , XK_l          , focusmon       , { .i = +1 } }       ,
 	{ MODKEY                                                , XK_semicolon  , shiftview      , { .i = 1 } }         ,
 	{ MODKEY|ShiftMask                                      , XK_semicolon  , shifttag       , { .i = 1 } }         ,
-	{ MODKEY                                                , XK_apostrophe , togglescratch  , {.ui = 1} }          ,
+	/* { MODKEY                                                , XK_apostrophe , togglescratch  , {.ui = 1} }       , */
 	/* { MODKEY|ShiftMask                                   , XK_apostrophe , spawn          , SHCMD("") }          , */
 	{ MODKEY                                                , XK_Return     , spawn          , {.v = termcmd } }    ,
 	{ MODKEY|ShiftMask                                      , XK_Return     , togglescratch  , {.ui = 0} }          ,
@@ -187,14 +196,17 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask                             , XK_x      , spawn      , SHCMD("") }                                         , */
 	/* { MODKEY                                       , XK_c      , spawn      , SHCMD("") }                                         , */
 	/* { MODKEY|ShiftMask                             , XK_c      , spawn      , SHCMD("") }                                         , */
+	{ MODKEY                                          , XK_c      , togglescratch  , {.ui = 1} }          ,
 	/* V is automatically bound above in STACKKEYS */
 	/*{ MODKEY                                        , XK_b      , togglebar  , {0} }                                               , */
 	{ MODKEY                                          , XK_b      , spawn      , SHCMD("$BROWSER") }                                 ,
 	/* { MODKEY|ShiftMask                             , XK_b      , spawn      , SHCMD("") }                                         , */
 	{ MODKEY                                          , XK_n      , spawn      , SHCMD("$TERMINAL -e nvim -c VimwikiIndex") }               ,
 	{ MODKEY|ShiftMask                                , XK_n      , spawn      , SHCMD("$TERMINAL -e newsboat; pkill -RTMIN+6 dwmblocks") } ,
-	{ MODKEY                                          , XK_m      , spawn      , SHCMD("$TERMINAL -e ncmpcpp") }                            ,
-	{ MODKEY|ShiftMask                                , XK_m      , spawn      , SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }  ,
+	{ MODKEY                                          , XK_m      , togglescratch  , {.ui = 2} }          ,
+	{ MODKEY|ShiftMask                                , XK_m      , spawn      , SHCMD("$TERMINAL -e ncmpcpp") }          ,
+	/*{ MODKEY                                          , XK_m      , spawn      , SHCMD("$TERMINAL -e ncmpcpp") }                            , */
+	/*{ MODKEY|ShiftMask                                , XK_m      , spawn      , SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }  ,*/
 	{ MODKEY                                          , XK_comma  , spawn      , SHCMD("mpc prev") }                                 ,
 	{ MODKEY|ShiftMask                                , XK_comma  , spawn      , SHCMD("mpc seek 0%") }                              ,
 	{ MODKEY                                          , XK_period , spawn      , SHCMD("mpc next") }                                 ,
