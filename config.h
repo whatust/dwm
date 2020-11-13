@@ -179,11 +179,13 @@ static Key keys[] = {
 	/*{ MODKEY                                              , XK_g          , shiftview      , { .i = -1 } }        , */
 	/*{ MODKEY|ShiftMask                                    , XK_g          , shifttag       , { .i = -1 } }        , */
 	/* J and K are automatically bound above in STACKEYS */
-	{ MODKEY                                                , XK_h          , setmfact       , {.f = -0.05} }       ,
-	{ MODKEY                                                , XK_l          , setmfact       , {.f = +0.05} }       ,
+	{ MODKEY|ControlMask                                               , XK_h          , setmfact       , {.f = -0.05} }       ,
+	{ MODKEY|ControlMask                                               , XK_l          , setmfact       , {.f = +0.05} }       ,
 
-	{ MODKEY|ShiftMask                                      , XK_h          , focusmon       , { .i = -1 } }       ,
-	{ MODKEY|ShiftMask                                      , XK_l          , focusmon       , { .i = +1 } }       ,
+	{ MODKEY                                      , XK_h          , focusmon       , { .i = -1 } }       ,
+	{ MODKEY                                      , XK_l          , focusmon       , { .i = +1 } }       ,
+	{ MODKEY|ShiftMask                                      , XK_h          , tagmon       , { .i = -1 } }       ,
+	{ MODKEY|ShiftMask                                      , XK_l          , tagmon       , { .i = +1 } }       ,
 	{ MODKEY                                                , XK_semicolon  , shiftview      , { .i = 1 } }         ,
 	{ MODKEY|ShiftMask                                      , XK_semicolon  , shifttag       , { .i = 1 } }         ,
 	/* { MODKEY                                                , XK_apostrophe , togglescratch  , {.ui = 1} }       , */
