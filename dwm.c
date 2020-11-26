@@ -191,7 +191,6 @@ static void clientmessage(XEvent *e);
 static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
-static void copyvalidchars(char *text, char *rawtext);
 static Monitor *createmon(void);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
@@ -762,19 +761,6 @@ configurerequest(XEvent *e)
 	XSync(dpy, False);
 }
 
-void
-copyvalidchars(char *text, char *rawtext)
-{
-	int i = -1, j = 0;
-
-	while(rawtext[++i]) {
-		if ((unsigned char)rawtext[i] >= ' ') {
-			text[j++] = rawtext[i];
-		}
-	}
-	text[j] = '\0';
-}
-
 Monitor *
 createmon(void)
 {
@@ -857,7 +843,7 @@ drawbar(Monitor *m)
 	Client *c;
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon || 1) { /* status is only drawn on selected monitor */
+	if (m == selmon || 1) { /* draw on all monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
 		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
@@ -2308,11 +2294,9 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
-    Monitor *m;
-	if (!gettextprop(root, XA_WM_NAME, rawstext, sizeof(rawstext)))
+    Monitor* m;
+	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
-	else
-		copyvalidchars(stext, rawstext);
 
     for(m = mons; m; m = m->next)
         drawbar(selmon);
