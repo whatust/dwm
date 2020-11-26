@@ -13,10 +13,10 @@ static const int showbar            = 1;   /* 0 means no bar */
 static const int topbar             = 1;   /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "FontAwesome:pixelsize=14:antialias=true:autohint=true" };
 static char dmenufont[]             = "monospace:size=10";
-static char normbgcolor[]           = "#1b2b34";
-static char normbordercolor[]       = "#555555";
-static char normfgcolor[]           = "#a7adba";
-static char selfgcolor[]            = "#dddddd";
+static char normbgcolor[]           = "#1a1a1a";
+static char normbordercolor[]       = "#4d4d4d";
+static char normfgcolor[]           = "#a3a3a3";
+static char selfgcolor[]            = "#cccccc";
 static char selbordercolor[]        = "#ff7400";
 static char selbgcolor[]            = "#204a87";
 static char *colors[][3] = {
@@ -129,8 +129,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask , XK_minus     , spawn , SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") } ,
 	{ MODKEY           , XK_equal     , spawn , SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") }  ,
 	{ MODKEY|ShiftMask , XK_equal     , spawn , SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") } ,
-	{ MODKEY           , XK_BackSpace , spawn , SHCMD("dwm_exit") }                                                   ,
-	{ MODKEY|ShiftMask , XK_BackSpace , spawn , SHCMD("dwm_exit") }                                                   ,
+	{ MODKEY           , XK_BackSpace , spawn , SHCMD("dwm_exit") }                                                 ,
+	{ MODKEY|ShiftMask , XK_BackSpace , spawn , SHCMD("dwm_exit") }                                                 ,
 
 	{ MODKEY              , XK_Tab          , view       , {0} }                                                                                                  ,
 	/* { MODKEY|ShiftMask , XK_Tab          , spawn      , SHCMD("") }                                                                                            , */
@@ -143,8 +143,8 @@ static Key keys[] = {
 	{ MODKEY              , XK_r            , spawn      , SHCMD("$TERMINAL -e runvifm") }                                                                        ,
 	{ MODKEY|ShiftMask    , XK_r            , spawn      , SHCMD("$TERMINAL -e htop") }                                                                           ,
 	{ MODKEY              , XK_t            , setlayout  , {.v = &layouts[0]} }                                                                                   , /* tile */
-	/*{ MODKEY|ShiftMask  , XK_t            , setlayout  , {.v = &layouts[1]} }                                                                                   , *//* bstack */
-	{ MODKEY              , XK_y            , setlayout  , {.v = &layouts[2]} }                                                                                   , /* spiral */
+	{ MODKEY|ShiftMask    , XK_t            , setlayout  , {.v = &layouts[1]} }                                                                                   , /* bstack */
+	/*{ MODKEY            , XK_y            , setlayout  , {.v = &layouts[2]} }                                                                                   , */ /* spiral */
 	/*{ MODKEY|ShiftMask  , XK_y            , setlayout  , {.v = &layouts[3]} }                                                                                   , *//* dwindle */
 	/*{ MODKEY            , XK_u            , setlayout  , {.v = &layouts[4]} }                                                                                   , *//* deck */
 	/*{ MODKEY|ShiftMask  , XK_u            , setlayout  , {.v = &layouts[5]} }                                                                                   , *//* monocle */
@@ -152,10 +152,10 @@ static Key keys[] = {
 	/*{ MODKEY|ShiftMask  , XK_i            , setlayout  , {.v = &layouts[7]} }                                                                                   , *//* centeredfloatingmaster */
 	{ MODKEY              , XK_o            , incnmaster , {.i = +1 } }                                                                                           ,
 	{ MODKEY|ShiftMask    , XK_o            , incnmaster , {.i = -1 } }                                                                                           ,
-	{ MODKEY              , XK_p            , spawn      , SHCMD("flameshot full --path ~/Images/screenshots/") }    ,
-	{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("flameshot gui") } ,
-	/*{ MODKEY              , XK_p            , spawn      , SHCMD("maim screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") }    ,*/
-	/*{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("maim -s screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") } ,*/
+	{ MODKEY              , XK_p            , spawn      , SHCMD("flameshot full --path ~/Images/screenshots/") }                                                 ,
+	{ MODKEY|ShiftMask    , XK_p            , spawn      , SHCMD("flameshot gui") }                                                                               ,
+	/*{ MODKEY            , XK_p            , spawn      , SHCMD("maim screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") }    , */
+	/*{ MODKEY|ShiftMask  , XK_p            , spawn      , SHCMD("maim -s screen_shot-$(date '+%y%m%d-%H%M-%S').png && notify-send \"Screenshot saved to ~/\"") } , */
 	/*{ MODKEY            , XK_p            , spawn      , SHCMD("mpc toggle") }                                                                                  , */
 	/*{ MODKEY|ShiftMask  , XK_p            , spawn      , SHCMD("mpc pause ; pauseallmpv") }                                                                     , */
 	{ MODKEY              , XK_bracketleft  , spawn      , SHCMD("mpc seek -10") }                                                                                ,
