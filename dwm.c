@@ -360,9 +360,10 @@ applyrules(Client *c)
 			c->isfloating = r->isfloating;
 			c->noswallow  = r->noswallow;
 			c->tags |= r->tags;
-			if ((r->tags & SPTAGMASK) && r->isfloating) {
-				c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-				c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+			/*if ((r->tags & SPTAGMASK) && r->isfloating) {*/
+			if (r->isfloating) {
+				c->x = c->mon->wx + (c->mon->ww / 4 - WIDTH(c) / 4);
+				c->y = c->mon->wy + (c->mon->wh / 4 - HEIGHT(c) / 4);
 			}
 
 			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -2299,7 +2300,7 @@ updatestatus(void)
 		strcpy(stext, "dwm-"VERSION);
 
     for(m = mons; m; m = m->next)
-        drawbar(selmon);
+        drawbar(m);
 }
 
 void
